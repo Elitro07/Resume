@@ -24,7 +24,7 @@
 :point_right:[ПК - Зачет](https://elitro07.github.io/ArxetectureAparatnix/READYY.html):point_left:
 
 :point_right:[Сюжетная Навелла](https://madbread67.github.io/PachasIK_algoritmisation/stud+zachet11.html):point_left:
-
+[тг бот](https://colab.research.google.com/drive/18fFsIkHJQB6ifl2B152e_stK5VnXOAGX?usp=sharing)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=elito07)](https://github.com/anuraghazra/github-readme-stats)
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=elitro07&layout=compact&theme=vision-friendly-dark)](https://github.com/anuraghazra/github-readme-stats)
