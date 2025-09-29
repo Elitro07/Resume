@@ -18,7 +18,7 @@
   <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="20px"/>
   
 <img src="https://komarev.com/ghpvc/?username=elitro07&style=flat-square&color=blue" alt=""/>
-:point_right:[Производство](https://ru.yougile.com/team/fba10092d6f7/Dinker):point_left:
+:point_right::[Производство](https://ru.yougile.com/team/fba10092d6f7/Dinker):point_left:
 
 :point_right::[Курс по STEPIK](https://elitro07.github.io/PredmetyLN/):point_left:
 
