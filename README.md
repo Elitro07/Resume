@@ -19,7 +19,7 @@
   
 <img src="https://komarev.com/ghpvc/?username=elitro07&style=flat-square&color=blue" alt=""/>
 :point_right::[Производство](https://ru.yougile.com/team/fba10092d6f7/Dinker):point_left:
-
+:point_right::[Курс по STEPIK](https://ru.yougile.com/team/fba10092d6f7/Dinker):point_left:
 :point_right::[Курс по STEPIK](https://elitro07.github.io/PredmetyLN/):point_left:
 
 :point_right:[ПК - Зачет](https://elitro07.github.io/ArxetectureAparatnix/READYY.html):point_left:
