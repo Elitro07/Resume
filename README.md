@@ -29,9 +29,9 @@
 
 :point_right:[тг бот](https://colab.research.google.com/drive/18fFsIkHJQB6ifl2B152e_stK5VnXOAGX?usp=sharing):point_left: 
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=elito07)](https://github.com/anuraghazra/github-readme-stats)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=elitro07&layout=compact&theme=vision-friendly-dark)](https://github.com/anuraghazra/github-readme-stats)
+
+
 
 <div>
   <img src="https://github.com/devicons/devicon/blob/master/icons/java/java-original-wordmark.svg" title="Java" alt="Java" width="40" height="40"/> 
