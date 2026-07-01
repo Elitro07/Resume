@@ -349,10 +349,10 @@
     .modal-gallery .cert-item img {
       width: 100%;
       height: auto;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
+      max-height: 70vh;
+      object-fit: contain;
       border-radius: 12px;
-      background: var(--bg-muted);
+      background: #fff;
       display: block;
     }
     .modal-gallery .cert-item .cert-title {
@@ -801,7 +801,9 @@
   <section class="section">
     <div class="section-title"><i class="fas fa-graduation-cap"></i> Курсы и Саморазвитие</div>
     <div class="grid-2col">
-      <div class="card"><div class="card-title"><i class="fas fa-university"></i> Stepik</div><div class="card-desc">Курс Stepik.</div><div class="card-links"><a class="modal-trigger" data-modal="sber"><i class="fas fa-certificate"></i> сертификат</a></div></div>
+      <div class="card"><div class="card-title"><i class="fas fa-university"></i> Stepik</div><div class="card-desc">Курс Stepik.</div><div class="card-links"><a class="modal-trigger" data-modal="stepik"><i class="fas fa-certificate"></i> сертификат</a></div></div>
+      <div class="card"><div class="card-title"><i class="fas fa-university"></i> Яндекс Лицей</div><div class="card-desc">Курс Яндекс Лицея.</div><div class="card-links"><a class="modal-trigger" data-modal="yandex"><i class="fas fa-certificate"></i> сертификат</a></div></div>
+      <div class="card"><div class="card-title"><i class="fas fa-university"></i> Сбер</div><div class="card-desc">Курс Сбера.</div><div class="card-links"><a class="modal-trigger" data-modal="sber"><i class="fas fa-certificate"></i> сертификат</a></div></div>
       <div class="card">
         <div class="card-title"><i class="fas fa-draw-polygon"></i> Цифровые решения</div>
         <div class="card-desc">Посещение экскурсии офиса «Цифровые решения».</div>
@@ -938,22 +940,35 @@
   <div class="modal-content">
     <h2><i class="fas fa-certificate"></i> Сертификаты · Яндекс Лицей</h2>
     <div class="modal-gallery">
-      <div class="cert-item" data-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='533' viewBox='0 0 400 533'%3E%3Crect width='400' height='533' fill='%23f0f5fc'/%3E%3Ctext x='40' y='250' font-family='Inter' font-size='22' fill='%231f4a7a'%3EЯндекс Лицей%3C/text%3E%3C/svg%3E">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='533' viewBox='0 0 400 533'%3E%3Crect width='400' height='533' fill='%23f0f5fc'/%3E%3Ctext x='40' y='250' font-family='Inter' font-size='22' fill='%231f4a7a'%3EЯндекс Лицей%3C/text%3E%3C/svg%3E" alt="Яндекс сертификат">
-        <div class="cert-title">📚 Основы программирования</div>
+      <div class="cert-item" data-src="assets/certificates/yandex.jpg">
+        <img src="assets/certificates/yandex.jpg" alt="Сертификат Яндекс Лицея">
+        <div class="cert-title">Яндекс Лицей</div>
       </div>
     </div>
     <button class="modal-close-btn" data-close="modal-yandex">Закрыть</button>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-sber">
+<div class="modal-overlay" id="modal-stepik">
   <div class="modal-content">
     <h2><i class="fas fa-certificate"></i> Сертификаты · Stepik</h2>
     <div class="modal-gallery">
-      <div class="cert-item" data-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='533' viewBox='0 0 400 533'%3E%3Crect width='400' height='533' fill='%23e0ebf7'/%3E%3Ctext x='40' y='250' font-family='Inter' font-size='22' fill='%231f4a7a'%3EСбербанк%3C/text%3E%3C/svg%3E">
-        <img src="assets/certificates/stepik-1.jpg" alt="Сбер сертификат">
+      <div class="cert-item" data-src="assets/certificates/stepik-1.jpg">
+        <img src="assets/certificates/stepik-1.jpg" alt="Сертификат Stepik">
         <div class="cert-title">Основы Css и HTML</div>
+      </div>
+    </div>
+    <button class="modal-close-btn" data-close="modal-stepik">Закрыть</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-sber">
+  <div class="modal-content">
+    <h2><i class="fas fa-certificate"></i> Сертификаты · Сбер</h2>
+    <div class="modal-gallery">
+      <div class="cert-item" data-src="assets/certificates/sber.jpg">
+        <img src="assets/certificates/sber.jpg" alt="Сертификат Сбера">
+        <div class="cert-title">Сбер</div>
       </div>
     </div>
     <button class="modal-close-btn" data-close="modal-sber">Закрыть</button>
@@ -1121,6 +1136,13 @@
 
     // Обработчик клика на .screenshot-modal-item (в модалке "Цифровые решения")
     document.querySelectorAll('.screenshot-modal-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const src = this.dataset.src;
+        if (src) openLightbox(src);
+      });
+    });
+
+    document.querySelectorAll('.modal-gallery .cert-item').forEach(item => {
       item.addEventListener('click', function() {
         const src = this.dataset.src;
         if (src) openLightbox(src);
