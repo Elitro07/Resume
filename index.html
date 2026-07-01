@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark">
+  <title>Резюме · Пластунов Даниил</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --bg-page: #0b0f14;
+      --bg-container: #131a24;
+      --bg-surface: #1a2332;
+      --bg-surface-elevated: #212d3d;
+      --bg-muted: #182028;
+      --text-primary: #e8eef4;
+      --text-secondary: #9bb0c8;
+      --text-muted: #6b8299;
+      --accent: #5ba3e0;
+      --accent-hover: #7bb8ed;
+      --accent-dark: #3d7ab5;
+      --border: #2a3849;
+      --border-light: #324558;
+      --shadow: rgba(0, 0, 0, 0.45);
+      --shadow-soft: rgba(0, 0, 0, 0.25);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    body {
+      background: var(--bg-page);
+      color: var(--text-primary);
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--bg-container);
+      border-radius: 32px;
+      box-shadow: 0 25px 50px -12px var(--shadow);
+      padding: 2rem 2rem 3rem;
+      border: 1px solid var(--border);
+    }
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
+    }
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #e8eef4, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .header-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--accent);
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 40px;
+      padding: 0.4rem 1.2rem;
+      background: var(--bg-surface);
+      cursor: pointer;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    .header-links a i { font-size: 1.1rem; }
+    .header-links a:hover {
+      background: var(--bg-surface-elevated);
+      color: var(--accent-hover);
+      border-color: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+    .header-links .telegram-btn {position: relative; }
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-dark);
+      color: white;
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 500;
+      box-shadow: 0 12px 28px -8px var(--shadow);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+      z-index: 999;
+      font-size: 0.95rem;
+    }
+    .toast.show { opacity: 1; }
+    .about {
+      background: var(--bg-surface);
+      border-radius: 28px;
+      padding: 1.6rem 2rem;
+      margin-bottom: 2.2rem;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2.5rem;
+      align-items: flex-start;
+    }
+    .about-text { flex: 2; min-width: 240px; }
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    .about-text .greeting {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: var(--text-primary);
+    }
+    .about-details {
+      flex: 3;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      background: var(--bg-surface-elevated);
+      padding: 0.8rem 1.2rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px var(--shadow-soft);
+      border: 1px solid var(--border);
+    }
+    .about-details .row {
+      display: flex;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--border);
+      padding: 0.4rem 0;
+    }
+    .about-details .row:last-child { border-bottom: none; }
+    .about-details .label {
+      font-weight: 500;
+      color: var(--accent);
+      min-width: 80px;
+    }
+    .about-details .value { color: var(--text-primary); }
+    .section { margin-top: 2.8rem; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      border-left: 6px solid var(--accent);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+    .section-title i {
+      color: var(--accent);
+      font-size: 1.7rem;
+      width: 2rem;
+    }
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+    .card {
+      background: var(--bg-surface);
+      border-radius: 24px;
+      padding: 1.5rem 1.5rem 1.8rem;
+      box-shadow: 0 4px 12px var(--shadow-soft);
+      border: 1px solid var(--border);
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-highlight {
+      background: var(--bg-surface-elevated);
+      border-left: 5px solid var(--accent);
+    }
+    .card:hover {
+      border-color: var(--accent-dark);
+      box-shadow: 0 12px 24px -12px var(--shadow);
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+    .card-title i {
+      color: var(--accent);
+      width: 1.6rem;
+      font-size: 1.2rem;
+    }
+    .card-meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+    }
+    .card-meta span {
+      background: var(--bg-muted);
+      padding: 0.15rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      border: 1px solid var(--border);
+    }
+    .card-desc {
+      color: var(--text-secondary);
+      line-height: 1.5;
+      font-size: 0.95rem;
+      flex: 1;
+    }
+    .card-links {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      border-top: 1px solid var(--border);
+      padding-top: 0.9rem;
+    }
+    .card-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .card-links a i { font-size: 0.9rem; }
+    .card-links a:hover {
+      text-decoration: underline;
+      color: var(--accent-hover);
+    }
+    .tag {
+      display: inline-block;
+      background: var(--bg-muted);
+      border-radius: 30px;
+      padding: 0.1rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+      border: 1px solid var(--border);
+    }
+    hr {
+      border: none;
+      border-top: 2px dashed var(--border-light);
+      margin: 1.2rem 0;
+    }
+    .footer-note {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 1.8rem;
+      text-align: center;
+    }
+    .footer-note i { color: var(--accent); }
+    @media (max-width: 640px) {
+      .container { padding: 1.2rem; }
+      .header { flex-direction: column; align-items: start; gap: 1rem; }
+      .header-links { width: 100%; justify-content: flex-start; }
+      .about { flex-direction: column; }
+    }
+
+    /* Модальное окно — вертикальный список, один сертификат на экран */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: var(--bg-container);
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      padding: 2rem 1.8rem 1.8rem;
+      overflow-y: auto;
+      box-shadow: 0 30px 60px -20px var(--shadow);
+      position: relative;
+      border-radius: 15px;
+      border: 1px solid var(--border);
+    }
+    .modal-content h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .modal-content h2 i { color: var(--accent); }
+
+    /* галерея вертикальным столбцом, каждый сертификат — во всю ширину */
+    .modal-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 1.8rem;
+    }
+    .modal-gallery .cert-item {
+      background: var(--bg-surface);
+      border-radius: 20px;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      transition: 0.2s;
+      cursor: pointer;
+      position: relative;
+      width: 100%;
+    }
+    .modal-gallery .cert-item:hover { box-shadow: 0 8px 18px var(--shadow-soft); }
+    .modal-gallery .cert-item img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 12px;
+      background: var(--bg-muted);
+      display: block;
+    }
+    .modal-gallery .cert-item .cert-title {
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+    .modal-gallery .cert-item .zoom-icon {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(19, 26, 36, 0.92);
+      border-radius: 30px;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      opacity: 0;
+      transition: 0.2s;
+      box-shadow: 0 2px 8px var(--shadow-soft);
+      border: 1px solid var(--border);
+    }
+    .modal-gallery .cert-item:hover .zoom-icon { opacity: 1; }
+
+    .modal-close-btn {
+      display: inline-block;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      padding: 0.5rem 2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      margin-top: 0.5rem;
+    }
+    .modal-close-btn:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--accent-dark);
+    }
+
+    /* Кнопка Подробнее / Скрыть в Цифровом производстве */
+    .expand-btn {
+      background: transparent;
+      border: 1px solid var(--accent-dark);
+      border-radius: 40px;
+      padding: 0.3rem 1.2rem;
+      font-weight: 500;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+      margin-bottom: -12px;
+      align-self: flex-start;
+    }
+    .expand-btn:hover {
+      background: var(--bg-muted);
+      border-color: var(--accent);
+    }
+    .expand-content {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.3s;
+      margin-top: 0;
+    }
+    .expand-content.open {
+      max-height: 3000px;
+      opacity: 1;
+      margin-top: 1rem;
+    }
+    .expand-content .preview-img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      padding: 0.5rem;
+    }
+    .expand-content .preview-img img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+    }
+    .expand-content .preview-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0.4rem 0 0.8rem;
+    }
+    .expand-content .extra-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* Новые стили для цифрового производства */
+    .subsection-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 1.8rem 0 1rem 0;
+      color: var(--text-primary);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .subsection-title i {
+      color: var(--accent);
+      margin-right: 10px;
+    }
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .screenshot-grid .screenshot-item {
+      background: var(--bg-surface);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .screenshot-grid .screenshot-item:hover {
+      box-shadow: 0 8px 18px var(--shadow-soft);
+      border-color: var(--accent-dark);
+    }
+    .screenshot-grid .screenshot-item img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      background: var(--bg-muted);
+    }
+    .screenshot-grid .screenshot-item .screenshot-label {
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      padding: 0.4rem 0;
+      background: var(--bg-surface-elevated);
+      border-top: 1px solid var(--border);
+    }
+    .video-container {
+      margin: 1rem 0;
+      background: var(--bg-surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .video-container video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      background: var(--bg-muted);
+    }
+    .glide-link {
+      display: inline-block;
+      margin: 1rem 0 0.5rem 0;
+      background: var(--accent-dark);
+      color: white !important;
+      padding: 0.6rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.2s;
+      border: none;
+      font-size: 0.95rem;
+    }
+    .glide-link:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+    @media (max-width: 768px) {
+      .screenshot-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .screenshot-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Стили для увеличенного изображения (световая комната) */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      cursor: pointer;
+    }
+    .lightbox-overlay.active {
+      display: flex;
+    }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: 0.2s;
+      background: none;
+      border: none;
+      font-weight: 300;
+      opacity: 0.7;
+    }
+    .lightbox-close:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    /* Стили для галереи скриншотов в модальном окне (адаптивные) */
+    .screenshot-gallery-modal {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 1.8rem;
+    }
+    .screenshot-gallery-modal .screenshot-modal-item {
+      background: var(--bg-surface);
+      border-radius: 16px;
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .screenshot-gallery-modal .screenshot-modal-item:hover {
+      box-shadow: 0 8px 18px var(--shadow-soft);
+      border-color: var(--accent-dark);
+    }
+    .screenshot-gallery-modal .screenshot-modal-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      background: var(--bg-muted);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div id="toastMessage" class="toast">Скопировано!</div>
+
+  <header class="header">
+    <h1><i class="fas fa-code" style="color: var(--accent); margin-right: 0.5rem;"></i> Резюме</h1>
+    <div class="header-links">
+      <a href="https://github.com/Elitro07" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a class="telegram-btn" id="telegramCopyBtn"><i class="fab fa-telegram-plane"></i> Telegram</a>
+      <a target="_blank" href="assets/docs/resume.pdf" download="resume.pdf">
+        <i class="fas fa-file-pdf"></i> Резюме PDF
+      </a>
+      <a href="https://en.yougile.com/board/0wog1vj6u8gy" target="_blank"><i class="fas fa-tasks"></i> YouGile</a>
+    </div>
+  </header>
+
+  <!-- ОБО МНЕ -->
+  <section class="about">
+    <div class="about-text">
+      <div class="greeting">👋 Приветствую на моём сайте-резюме!</div>
+      <p>
+        Меня зовут Даниил. Программирование для меня — это увлекательный конструктор: я люблю собирать сайты и видеть, как они оживают.
+Я пока не гуру, но с удовольствием разбираюсь в новых технологиях и стараюсь делать каждый свой проект чуть лучше предыдущего. 
+А чтобы проверить свои силы, иногда участвую в IT-олимпиадах и конкурсах — там всегда можно узнать что-то новое. Подробности смотрите в разделах ниже.
+      </p>
+    </div>
+    <div class="about-details">
+      <div class="row"><span class="label">ФИО</span><span class="value">Пластунов Даниил Викторович</span></div>
+      <div class="row"><span class="label">Дата рождения</span><span class="value">10 июля 2007 (18 лет)</span></div>
+      <div class="row"><span class="label">Город</span><span class="value">Московская область, г. Люберцы</span></div>
+      <div class="row"><span class="label">Место обучения</span><span class="value">ГБПОУ МО «Люберецкий Техникум имени Героя Советского Союза, Лётчика-Космонавта Ю. А. Гагарина»</span></div>
+      <div class="row"><span class="label">Специальность</span><span class="value">09.02.07 «Информационные системы и программирование»</span></div>
+    </div>
+  </section>
+
+  <!-- ПРОЕКТЫ -->
+  <section class="section">
+    <div class="section-title"><i class="fas fa-folder-open"></i> Проекты</div>
+
+    <!-- ИТ-Планета -->
+    <div style="margin-bottom: 1.8rem;">
+      <div class="card card-highlight">
+        <div class="card-title"><i class="fas fa-trophy"></i> ИТ-Планета</div>
+        <div class="card-meta">
+          <span>Номинация: Мастерство промптов: работа с текстом в российских нейросетях</span>
+          <span>Участник финала</span>
+          <span>3 сертификатов</span>
+        </div>
+        <div class="card-desc">
+          <p>Участие в финале олимпиады ИТ-Планета в номинации по работе с текстовыми нейросетями. Решение задач на генерацию, обработку и анализ текста с использованием российских ИИ-моделей.</p>
+        </div>
+        <div class="card-links">
+          <a class="modal-trigger" data-modal="itplanet"><i class="fas fa-certificate"></i> Сертификаты</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Цифровое производство (ПОЛНОСТЬЮ ПЕРЕРАБОТАНО) -->
+    <div style="margin-bottom: 1.8rem;">
+      <div class="card card-highlight" id="digitalProdCard">
+        <div class="card-title"><i class="fas fa-industry"></i> Цифровое производство</div>
+        <div class="card-meta"><span>Desktop + Mobile + Django</span></div>
+        <div class="card-desc">
+          Мобильное и настольное приложение, распознование наличия СИЗ у работников с помощью инструмента Roboflow, сайт на jango с использованием базы данных sqlite.
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/Dellyyy/Resume" target="_blank"><i class="fab fa-github"></i> Мобильное и настольное приложение на GitHub</a>
+        </div>
+        <div class="card-links" style="justify-content: space-between; align-items: center;">
+          <div>
+          </div>
+          <button class="expand-btn" data-expand-target="expandContent"><i class="fas fa-chevron-down"></i> Подробнее</button>
+        </div>
+        <div class="expand-content" id="expandContent">
+          
+          <!-- РАЗДЕЛ 1: Настольное приложение -->
+          <div class="subsection-title"><i class="fas fa-desktop"></i> Раздел 1. Настольное приложение</div>
+          <div class="extra-desc" style="margin-bottom: 1rem;">
+            <p>Было разработано специальное настольное приложение с помощью редактора QT Creator, в котором содержится вся информация касаемая производства (Главная страница, СИЗ, Опасные зоны, Сортировка продукции, Состав продукции, Контроль качества и Сборка по штрих-коду). Добавлен специальный калькулятор для вычисления количества продуктов при имеющихся ингредиентов и наоборот путем пропорционального расчета. Во вкладке "О компании" содержится информация о компании и о ее сотрудниках.</p>
+          </div>
+          
+          <!-- Сетка скриншотов 3x3 -->
+          <div class="screenshot-grid">
+            <div class="screenshot-item" data-src="assets/projects/digital_production/mainpage.jpg">
+              <img src="assets/projects/digital_production/mainpage.jpg" alt="Главная">
+              <div class="screenshot-label">Главная</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/siz.jpg">
+              <img src="assets/projects/digital_production/siz.jpg" alt="СИЗ">
+              <div class="screenshot-label">СИЗ</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/danger-zones.jpg">
+              <img src="assets/projects/digital_production/danger-zones.jpg" alt="Опасные зоны">
+              <div class="screenshot-label">Опасные зоны</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/sort-prod.jpg">
+              <img src="assets/projects/digital_production/sort-prod.jpg" alt="Сортировка продукции">
+              <div class="screenshot-label">Сортировка продукции</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/prod-compound.jpg">
+              <img src="assets/projects/digital_production/prod-compound.jpg" alt="Состав продукции">
+              <div class="screenshot-label">Состав продукции</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/prod-qual.jpg">
+              <img src="assets/projects/digital_production/prod-qual.jpg" alt="Контроль качества">
+              <div class="screenshot-label">Контроль качества</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/prod-ident.jpg">
+              <img src="assets/projects/digital_production/prod-ident.jpg" alt="Сборка по штрих-коду">
+              <div class="screenshot-label">Сборка по штрих-коду</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/about.jpg">
+              <img src="assets/projects/digital_production/about.jpg" alt="О компании">
+              <div class="screenshot-label">Вкладка "О компании"</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/calculator.jpg">
+              <img src="assets/projects/digital_production/calculator.jpg" alt="Калькулятор">
+              <div class="screenshot-label">Калькулятор</div>
+            </div>
+          </div>
+
+          <!-- Roboflow -->
+          <div class="subsection-title" style="margin-top: 2rem;"><i class="fas fa-robot"></i> Применение Roboflow (пример в игре)</div>
+          <div class="extra-desc" style="margin-bottom: 1rem;">
+            <p>Благодаря инструменту Roboflow система видит, соблюдает ли работник СИЗ. Ниже приведен видео-пример.</p>
+          </div>
+          <div class="video-container">
+            <video controls>
+              <source src="assets/projects/digital_production/siz-demonstration.mp4" type="video/mp4">
+              Ваш браузер не поддерживает видео.
+            </video>
+          </div>
+
+          <!-- РАЗДЕЛ 2: Мобильное приложение -->
+          <div class="subsection-title" style="margin-top: 2rem;"><i class="fas fa-mobile-alt"></i> Раздел 2. Мобильное приложение</div>
+          <div class="extra-desc" style="margin-bottom: 1rem;">
+            <p>С помощью онлайн-конструктора мобильных приложений Glide было создано мобильное приложение для производства. По функционалу, оно схоже с настольным, но было добавлено несколько дополнительных функций, например, регистрация и авторизация пользователя, оставление отзывов, добавлено меню с продукцией и расценками.</p>
+          </div>
+          <!-- 3 скриншота -->
+          <div class="screenshot-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="screenshot-item" data-src="assets/projects/digital_production/mobile-mainpage.jpg">
+              <img src="assets/projects/digital_production/mobile-mainpage.jpg" alt="Мобильное приложение 1">
+              <div class="screenshot-label">Главный экран</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/mobile-menu.jpg">
+              <img src="assets/projects/digital_production/mobile-menu.jpg" alt="Мобильное приложение 2">
+              <div class="screenshot-label">Меню продукции</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/mobile-reviews.jpg">
+              <img src="assets/projects/digital_production/mobile-reviews.jpg" alt="Мобильное приложение 3">
+              <div class="screenshot-label">Отзывы</div>
+            </div>
+          </div>
+          <a href="https://dinker-factory.glide.page/" target="_blank" class="glide-link"><i class="fas fa-external-link-alt"></i> Перейти в приложение</a>
+
+          <!-- РАЗДЕЛ 3: Сайт на Django -->
+          <div class="subsection-title" style="margin-top: 2rem;"><i class="fab fa-python"></i> Раздел 3. Сайт на Django</div>
+          <div class="extra-desc" style="margin-bottom: 1rem;">
+            <p>Для производства был разработан интернет-магазин на Django. Были добавлены функции Регистрации и Авторизации, система добавления товара в корзину. Для сайта была разработана база данных SQLite, из которой для сайта предоставлялись следующие данные: Карточка (название товара, описание, цена, путь к изображению), корзина, чеки и т.д.</p>
+          </div>
+          <!-- 3 скриншота -->
+          <div class="screenshot-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="screenshot-item" data-src="assets/projects/digital_production/jango-registration.jpg">
+              <img src="assets/projects/digital_production/jango-registration.jpg" alt="Сайт Django 1">
+              <div class="screenshot-label">Окно регистрации</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/jango-authorization.jpg">
+              <img src="assets/projects/digital_production/jango-authorization.jpg" alt="Сайт Django 2">
+              <div class="screenshot-label">Окно авторизации</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/projects/digital_production/jango-catalog.jpg">
+              <img src="assets/projects/digital_production/jango-catalog.jpg" alt="Сайт Django 3">
+              <div class="screenshot-label">Каталог товаров</div>
+            </div>
+          </div>
+
+        </div><!-- /expand-content -->
+      </div>
+    </div>
+  </section>
+
+  <!-- КУРСЫ и САМОРАЗВИТИЕ -->
+  <section class="section">
+    <div class="section-title"><i class="fas fa-graduation-cap"></i> Курсы и Саморазвитие</div>
+    <div class="grid-2col">
+      <div class="card"><div class="card-title"><i class="fas fa-university"></i> Stepik</div><div class="card-desc">Курс Stepik.</div><div class="card-links"><a class="modal-trigger" data-modal="sber"><i class="fas fa-certificate"></i> сертификат</a></div></div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-draw-polygon"></i> Цифровые решения</div>
+        <div class="card-desc">Посещение экскурсии офиса «Цифровые решения».</div>
+        <div class="card-links"><a class="modal-trigger" data-modal="screenshots"><i class="fas fa-image"></i> Скриншоты</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРАКТИКА -->
+  <section class="section">
+    <div class="section-title"><i class="fas fa-briefcase"></i> Практика</div>
+    <div class="grid-2col">
+      <div class="card"><div class="card-title"><i class="fas fa-folder"></i> Документы практики</div><div class="card-desc">Шаблоны и готовые документы на Google Диске.</div><div class="card-links"><a href="https://drive.google.com/drive/folders/1Gc1d_HCNt6B4TtAzas4qlnntx9DEeQR4?usp=drive_link" target="_blank"><i class="fab fa-google-drive"></i> Готовые документы</a></div></div>
+    </div>
+
+    <div style="margin-top: 1.8rem;">
+      <div class="card card-highlight" id="itAssistantCard">
+        <div class="card-title"><i class="fas fa-robot"></i> Service Desk · ИТ-поддержка</div>
+        <div class="card-meta">
+          <span>React + TypeScript</span>
+          <span>Service Desk</span>
+          <span>Практика</span>
+        </div>
+        <div class="card-desc">
+          Веб-приложение для регистрации обращений в отдел системного администрирования: диалоговый ИИ-ассистент распознаёт намерение пользователя, отвечает на общие вопросы или помогает оформить заявку с приоритетом, SLA и журналом обращений.
+        </div>
+        <div class="card-links">
+          <a href="https://6a4098f8659bb4b4bd7d2155--ornate-piroshki-81ba86.netlify.app/" target="_blank" id="itAssistantSiteLink"><i class="fas fa-globe"></i> Открыть сайт</a>
+          <a href="https://github.com/Elitro07/Practica3kurs" target="_blank" id="itAssistantGithubLink"><i class="fab fa-github"></i> Репозиторий на GitHub</a>
+        </div>
+        <div class="card-links" style="justify-content: flex-end; align-items: center;">
+          <button class="expand-btn" data-expand-target="itAssistantExpand"><i class="fas fa-chevron-down"></i> Скриншоты работы</button>
+        </div>
+        <div class="expand-content" id="itAssistantExpand">
+          <div class="extra-desc" style="margin-bottom: 1rem;">
+            <p>Демонстрация работы Service Desk: создание заявки через диалог с ассистентом и просмотр журнала обращений.</p>
+          </div>
+          <div class="screenshot-grid">
+            <div class="screenshot-item" data-src="assets/practice/it-assistant/screen-1.jpg">
+              <img src="assets/practice/it-assistant/screen-1.jpg" alt="Создание заявки — шаг 1">
+              <div class="screenshot-label">Создание заявки (1)</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/practice/it-assistant/screen-2.jpg">
+              <img src="assets/practice/it-assistant/screen-2.jpg" alt="Создание заявки — шаг 2">
+              <div class="screenshot-label">Создание заявки (2)</div>
+            </div>
+            <div class="screenshot-item" data-src="assets/practice/it-assistant/screen-3.jpg">
+              <img src="assets/practice/it-assistant/screen-3.jpg" alt="Журнал заявок">
+              <div class="screenshot-label">Журнал заявок</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- УЧЕБНЫЕ МАТЕРИАЛЫ -->
+  <section class="section">
+    <div class="section-title"><i class="fa-solid fa-layer-group"></i> Учебные материалы</div>
+    <div class="grid-2col">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-file-alt"></i> Конспекты</div>
+        <div class="card-desc">• API <br> • Математическое моделирование <br> • Backend Python🐍 <br> • Компьютерное зрение </div>
+        <div class="card-links"><a href="https://drive.google.com/drive/folders/11GTbHBb1T8o8CcX7YXVkAOvZsty_OOgK?usp=drive_link" target="_blank"><i class="fab fa-google-drive"></i> Google-документы</a></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-calculator"></i> Численные методы</div>
+        <div class="card-desc">GoogleColab: логистическая регрессия, обучение на своём датасете.</div>
+        <div class="card-links"><a href="https://colab.research.google.com/drive/1qlrhf7H2HsjuhH6bQ4YVYfN9Qi6nb8Kw?usp=sharing" target="_blank"><i class="fab fa-google-drive"></i> Google Drive</a></div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+  <div class="footer-note">
+    <i class="fas fa-check-circle"></i> Все сертификаты, скриншоты и проекты загружены в репозиторий resume/assets/
+  </div>
+</div>
+
+<!-- Модальные окна с вертикальной галереей -->
+<div class="modal-overlay" id="modal-itplanet">
+  <div class="modal-content">
+    <h2><i class="fas fa-certificate"></i> Сертификаты · ИТ-Планета</h2>
+    <div class="modal-gallery">
+      
+      <!-- Карточка 1 -->
+      <div class="cert-item" data-src="assets/olympiads/it-planet/certificate_1.jpg">
+        <img src="assets/olympiads/it-planet/it-planet-cert-1.jpg" alt="Сертификат Мастерство промптов (текст)">
+        <div class="cert-title">Участие в первом отборочном этапе</div>
+      </div>
+      
+      <!-- Карточка 2 -->
+      <div class="cert-item" data-src="assets/olympiads/it-planet/certificate_2.jpg">
+        <img src="assets/olympiads/it-planet/it-planet-cert-2.jpg" alt="Сертификат Прикладное программирование if...else">
+        <div class="cert-title">Успешное завершение первого отборочного этапа</div>
+      </div>
+      
+      <!-- Карточка 3 -->
+      <div class="cert-item" data-src="assets/olympiads/it-planet/certificate_3.jpg">
+        <img src="assets/olympiads/it-planet/it-planet-cert-3.jpg" alt="Сертификат Мастерство промптов (изображения)">
+        <div class="cert-title">Участие во втором отборочном этапе</div>
+      </div>
+      
+      <!-- Карточка 4 (дополнительная номинация) -->
+      <div class="cert-item" data-src="assets/olympiads/it-planet/certificate_4.jpg">
+        <img src="assets/olympiads/it-planet/it-planet-cert-4.jpg" alt="Сертификат дополнительной номинации">
+        <div class="cert-title">Успешное завершение второго отборочного этапа</div>
+      </div>
+     
+      <div class="cert-item" data-src="assets/olympiads/it-planet/certificate_4.jpg">
+        <img src="assets/olympiads/it-planet/it-planet-cert-5.jpg" alt="Сертификат дополнительной номинации">
+        <div class="cert-title">Участие в финале</div>
+      </div>
+      
+    </div>
+    <button class="modal-close-btn" data-close="modal-itplanet">Закрыть</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-vk">
+  <div class="modal-content">
+    <h2><i class="fas fa-certificate"></i> Сертификаты · VK Education</h2>
+    <div class="modal-gallery">
+      <div class="cert-item" data-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='533' viewBox='0 0 400 533'%3E%3Crect width='400' height='533' fill='%23e6f0fa'/%3E%3Ctext x='40' y='250' font-family='Inter' font-size='22' fill='%231f4a7a'%3EVK Education%3C/text%3E%3C/svg%3E">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='533' viewBox='0 0 400 533'%3E%3Crect width='400' height='533' fill='%23e6f0fa'/%3E%3Ctext x='40' y='250' font-family='Inter' font-size='22' fill='%231f4a7a'%3EVK Education%3C/text%3E%3C/svg%3E" alt="VK сертификат">
+        <div class="cert-title">📘 Курс по Python</div>
+      </div>
+    </div>
+    <button class="modal-close-btn" data-close="modal-vk">Закрыть</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-yandex">
+  <div class="modal-content">
+    <h2><i class="fas fa-certificate"></i> Сертификаты · Яндекс Лицей</h2>
+    <div class="modal-gallery">
+      <div class="cert-item" data-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='533' viewBox='0 0 400 533'%3E%3Crect width='400' height='533' fill='%23f0f5fc'/%3E%3Ctext x='40' y='250' font-family='Inter' font-size='22' fill='%231f4a7a'%3EЯндекс Лицей%3C/text%3E%3C/svg%3E">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='533' viewBox='0 0 400 533'%3E%3Crect width='400' height='533' fill='%23f0f5fc'/%3E%3Ctext x='40' y='250' font-family='Inter' font-size='22' fill='%231f4a7a'%3EЯндекс Лицей%3C/text%3E%3C/svg%3E" alt="Яндекс сертификат">
+        <div class="cert-title">📚 Основы программирования</div>
+      </div>
+    </div>
+    <button class="modal-close-btn" data-close="modal-yandex">Закрыть</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-sber">
+  <div class="modal-content">
+    <h2><i class="fas fa-certificate"></i> Сертификаты · Stepik</h2>
+    <div class="modal-gallery">
+      <div class="cert-item" data-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='533' viewBox='0 0 400 533'%3E%3Crect width='400' height='533' fill='%23e0ebf7'/%3E%3Ctext x='40' y='250' font-family='Inter' font-size='22' fill='%231f4a7a'%3EСбербанк%3C/text%3E%3C/svg%3E">
+        <img src="assets/certificates/stepik-1.jpg" alt="Сбер сертификат">
+        <div class="cert-title">Основы Css и HTML</div>
+      </div>
+    </div>
+    <button class="modal-close-btn" data-close="modal-sber">Закрыть</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cloud">
+  <div class="modal-content">
+    <h2><i class="fas fa-certificate"></i> Сертификаты · Yandex Cloud</h2>
+    <div class="modal-gallery">
+      <div class="cert-item" data-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='533' viewBox='0 0 400 533'%3E%3Crect width='400' height='533' fill='%23eef3fa'/%3E%3Ctext x='40' y='250' font-family='Inter' font-size='22' fill='%231f4a7a'%3EYandex Cloud%3C/text%3E%3C/svg%3E">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='533' viewBox='0 0 400 533'%3E%3Crect width='400' height='533' fill='%23eef3fa'/%3E%3Ctext x='40' y='250' font-family='Inter' font-size='22' fill='%231f4a7a'%3EYandex Cloud%3C/text%3E%3C/svg%3E" alt="Cloud сертификат">
+        <div class="cert-title">☁️ Облачные технологии</div>
+      </div>
+    </div>
+    <button class="modal-close-btn" data-close="modal-cloud">Закрыть</button>
+  </div>
+</div>
+
+<!-- Модальное окно для скриншотов "Цифровые решения" -->
+<div class="modal-overlay" id="modal-screenshots">
+  <div class="modal-content">
+    <h2><i class="fas fa-image"></i> Скриншоты · Цифровые решения</h2>
+    <div class="screenshot-gallery-modal">
+      <div class="screenshot-modal-item" data-src="assets/events/excursion-1.jpg">
+        <img src="assets/events/excursion-1.jpg" alt="Скриншот 1">
+      </div>
+      <div class="screenshot-modal-item" data-src="assets/events/excursion-2.jpg">
+        <img src="assets/events/excursion-2.jpg" alt="Скриншот 2">
+      </div>
+      <div class="screenshot-modal-item" data-src="assets/events/excursion-3.jpg">
+        <img src="assets/events/excursion-3.jpg" alt="Скриншот 3">
+      </div>
+      <div class="screenshot-modal-item" data-src="assets/events/excursion-4.jpg">
+        <img src="assets/events/excursion-4.jpg" alt="Скриншот 4">
+      </div>
+      <div class="screenshot-modal-item" data-src="assets/events/excursion-5.jpg">
+        <img src="assets/events/excursion-5.jpg" alt="Скриншот 5">
+      </div>
+    </div>
+    <button class="modal-close-btn" data-close="modal-screenshots">Закрыть</button>
+  </div>
+</div>
+
+<!-- Световая комната для увеличения скриншотов -->
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <img id="lightboxImage" src="" alt="Увеличенное изображение">
+</div>
+
+
+<script>
+  (function() {
+    // ---------- тост для Telegram ----------
+    const toast = document.getElementById('toastMessage');
+    let toastTimeout = null;
+    function showToast(text) {
+      toast.textContent = text || 'Скопировано!';
+      toast.classList.add('show');
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => { toast.classList.remove('show'); }, 1500);
+    }
+    const tgBtn = document.getElementById('telegramCopyBtn');
+    if (tgBtn) {
+      tgBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const username = '@PlastunovDanya';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(username).then(() => showToast('Скопировано!'))
+            .catch(() => fallbackCopy(username));
+        } else { fallbackCopy(username); }
+      });
+    }
+    function fallbackCopy(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try { document.execCommand('copy'); showToast('Скопировано!'); } catch (e) { showToast('Не удалось скопировать'); }
+      document.body.removeChild(textarea);
+    }
+
+    // ---------- Модальные окна ----------
+    const modals = document.querySelectorAll('.modal-overlay');
+    const triggers = document.querySelectorAll('.modal-trigger');
+    const closeBtns = document.querySelectorAll('.modal-close-btn');
+
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.add('active');
+    }
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.remove('active');
+    }
+
+    triggers.forEach(tr => {
+      tr.addEventListener('click', function(e) {
+        e.preventDefault();
+        const modalId = this.dataset.modal;
+        if (modalId) openModal('modal-' + modalId);
+      });
+    });
+
+    closeBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const closeId = this.dataset.close;
+        if (closeId) closeModal(closeId);
+      });
+    });
+
+    modals.forEach(modal => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('active');
+        }
+      });
+    });
+
+    // ---------- Раскрытие "Подробнее" / "Скриншоты" ----------
+    document.querySelectorAll('.expand-btn[data-expand-target]').forEach(btn => {
+      const content = document.getElementById(btn.dataset.expandTarget);
+      if (!content) return;
+      let expanded = false;
+      const defaultLabel = btn.innerHTML;
+      const isScreenshots = defaultLabel.includes('Скриншот');
+      btn.addEventListener('click', function() {
+        expanded = !expanded;
+        content.classList.toggle('open', expanded);
+        this.innerHTML = expanded
+          ? '<i class="fas fa-chevron-up"></i> Скрыть'
+          : (isScreenshots
+            ? '<i class="fas fa-chevron-down"></i> Скриншоты работы'
+            : '<i class="fas fa-chevron-down"></i> Подробнее');
+      });
+    });
+
+    // ---------- Световая комната для скриншотов ----------
+    const lightboxOverlay = document.getElementById('lightboxOverlay');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src) {
+      if (!src) return;
+      lightboxImage.src = src;
+      lightboxOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightboxOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Обработчик клика на всех .screenshot-item (в карточке "Цифровое производство")
+    document.querySelectorAll('.screenshot-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        if (e.target.closest('.screenshot-label')) return;
+        const src = this.dataset.src;
+        if (src) openLightbox(src);
+      });
+    });
+
+    // Обработчик клика на .screenshot-modal-item (в модалке "Цифровые решения")
+    document.querySelectorAll('.screenshot-modal-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const src = this.dataset.src;
+        if (src) openLightbox(src);
+      });
+    });
+
+    // Закрытие по кнопке
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    // Закрытие по фону
+    if (lightboxOverlay) {
+      lightboxOverlay.addEventListener('click', function(e) {
+        if (e.target === this) closeLightbox();
+      });
+    }
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+  })();
+</script>
+</body>
+</html>
